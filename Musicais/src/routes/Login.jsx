@@ -32,16 +32,19 @@ function Login() {
       {getUsuario && getSenha ? (
         <Portifolio/>
       ) : (
-        <form onSubmit={handleSubmit} >
-          <p>
-            USUÁRIO:
-            <input type="text" placeholder="Digite seu Usuário" ref={usuario} />
-          </p>
-          <p>
-            SENHA:
-            <input type="password" placeholder="Digite sua senha" ref={senha} />
-          </p>
-          <button type="submit">ENTRAR</button>
+        <form id="frmLogin" onSubmit={handleSubmit} >
+
+            <h2 id="ttLogin">Bem-vindo faça seu login para continuar</h2>
+
+            <p id="fieldLogin">
+
+              <input type="text" className="inputLogin" placeholder="Seu Usuário" ref={usuario} />
+
+              <input type="password" className="inputLogin" placeholder="Sua senha" ref={senha} />
+
+            </p>
+            
+            <button id='btnInputLogin' type="submit">Fazer login</button>
         </form>
       )}
     </section>
