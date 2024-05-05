@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import Portifolio from './Portifolio';
+import ListaProdutos from './ListaProdutos';
 import '../css/estilo.css';
 
 function Login() {
@@ -30,7 +30,7 @@ function Login() {
     <section className="login">
       {/*condição ternária */}
       {getUsuario && getSenha ? (
-        <Portifolio/>
+        <ListaProdutos/>
       ) : (
         <form className="frmLogin" onSubmit={handleSubmit} >
 
