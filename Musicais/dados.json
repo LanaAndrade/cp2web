@@ -4,13 +4,15 @@
             "id":1,
             "nome":"Jogo-44",
             "desc":"descricao jogo 44",
-            "valor":250
+            "valor":250,
+            "qtd":20
         },
         {
             "id":2,
             "nome":"Jogo-45",
             "desc":"descricao jogo 45",
-            "valor":100
+            "valor":100,
+            "qtd":10
         }
     ]
 }

@@ -9,12 +9,13 @@ function Produto() {
 
     async function loadData() {
         try {
-            const response = await fetch('dados.json'); // Substitua 'dados.json' pelo caminho do seu arquivo JSON externo
+            const response = await fetch('Musicais/dados.json');
             if (!response.ok) {
                 throw new Error('Erro ao carregar os dados');
             }
-            const data = await response.json(); // Converte a resposta para JSON
-            setDatabase(data);
+            const jsonData = await response.json(); // Converte a resposta para JSON
+            const produtos = jsonData.produto; // Acessa a chave "produto" do JSON
+            setDatabase(produtos); // Define os produtos na variável de estado
         } catch (error) {
             console.error('Erro:', error.message);
         }
@@ -23,19 +24,19 @@ function Produto() {
     function createData() {
         const newProduct = {};
 
-        newProduct.product = prompt("Digite o nome do produto:");
-        if (!newProduct.product) {
+        newProduct.nome = prompt("Digite o nome do produto:");
+        if (!newProduct.nome) {
             return; // Se o usuário cancelar ou deixar em branco, não cria o produto
         }
 
-        newProduct.quantity = parseInt(prompt("Digite a quantidade do produto:"), 10);
-        if (isNaN(newProduct.quantity) || newProduct.quantity <= 0) {
+        newProduct.qtd = parseInt(prompt("Digite a quantidade do produto:"), 10);
+        if (isNaN(newProduct.qtd) || newProduct.qtd <= 0) {
             alert("Quantidade inválida!");
             return; // Se o usuário digitar uma quantidade inválida, não cria o produto
         }
 
-        newProduct.price = parseFloat(prompt("Digite o preço do produto:"));
-        if (isNaN(newProduct.price) || newProduct.price <= 0) {
+        newProduct.valor = parseFloat(prompt("Digite o preço do produto:"));
+        if (isNaN(newProduct.valor) || newProduct.valor <= 0) {
             alert("Preço inválido!");
             return; // Se o usuário digitar um preço inválido, não cria o produto
         }
@@ -48,9 +49,9 @@ function Produto() {
     function readData() {
         return database.map(item => (
             <tr key={item.id}>
-                <td>{item.product}</td>
-                <td>{item.quantity}</td>
-                <td>{item.price}</td>
+                <td>{item.nome}</td>
+                <td>{item.qtd}</td>
+                <td>{item.valor}</td>
                 <td>
                     <button className="edit" onClick={() => updateData(item.id)}>Editar</button>
                     <button className="delete" onClick={() => deleteData(item.id)}>Excluir</button>
@@ -64,19 +65,19 @@ function Produto() {
         if (index !== -1) {
             const newProduct = {};
 
-            newProduct.product = prompt("Digite o novo nome do produto:");
-            if (!newProduct.product) {
+            newProduct.nome = prompt("Digite o novo nome do produto:");
+            if (!newProduct.nome) {
                 return; // Se o usuário cancelar ou deixar em branco, não atualiza o produto
             }
 
-            newProduct.quantity = parseInt(prompt("Digite a nova quantidade do produto:"), 10);
-            if (isNaN(newProduct.quantity) || newProduct.quantity <= 0) {
+            newProduct.qtd = parseInt(prompt("Digite a nova quantidade do produto:"), 10);
+            if (isNaN(newProduct.qtd) || newProduct.qtd <= 0) {
                 alert("Quantidade inválida!");
                 return; // Se o usuário digitar uma quantidade inválida, não atualiza o produto
             }
 
-            newProduct.price = parseFloat(prompt("Digite o novo preço do produto:"));
-            if (isNaN(newProduct.price) || newProduct.price <= 0) {
+            newProduct.valor = parseFloat(prompt("Digite o novo preço do produto:"));
+            if (isNaN(newProduct.valor) || newProduct.valor <= 0) {
                 alert("Preço inválido!");
                 return; // Se o usuário digitar um preço inválido, não atualiza o produto
             }
