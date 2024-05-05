@@ -1,42 +1,15 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&family=Noto+Serif&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
+  background-color: #E8ECEE;
+  box-sizing: border-box;
 }
 
-.menu {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
-  color: #fff;
-  position: fixed;
-}
-
-.nav-menu ul {
-  display: inline;
-  text-decoration: none;
-  padding: 15px;
-}
-
-.nav-menu a {
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 20px;
-}
-.tlink {
-  font-size: 2rem;
-  padding: 5px;
-}
-
-.nav-menu a:hover {
-  background-color: transparent;
-  color: goldenrod;
-}
 .container {
   width: 100%;
   height: 100vh;
@@ -114,19 +87,7 @@ p {
   color: #fff;
 }
 
-footer {
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  margin-left: 40%;
-  padding: 0 20px;
-  display: flex;
-  color: white;
-}
-h5 {
-  margin-top: 50px;
-  text-align: center;
-}
+
 /* Card */
 
 .card {
@@ -195,7 +156,7 @@ h5 {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  padding-top: 4rem;
   flex-direction: column;
   gap: 1rem;
 
@@ -256,4 +217,186 @@ textarea::placeholder {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-style: normal;
+}
+
+#btnInputLogin:hover{
+  background-color: #299E9E;
+  opacity: 1;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+/* ************** TibÃ£o - Erro, Nav e Footer **************** */
+
+#main-error{
+  padding: 10rem 4rem;
+    display: flex;
+    flex-direction: column
+}
+
+#error-404{
+  font-family: 'Dancing Script';
+  font-size: 7rem;
+  color: #299E9E;
+  padding-bottom: 2rem;
+}
+
+.error-text{
+  font-family: 'Roboto';
+  font-size: 1.5rem;
+  color: #484848;
+  padding-bottom: 1rem;
+}
+
+
+.nav-menu {
+  display: flex;
+  padding: 0.9rem 2.8rem;
+  justify-content: space-between
+}
+
+#logo{
+  display: flex;
+  align-items: center;
+}
+
+#logo img{
+  width: auto;
+  height: 2.7rem;
+}
+
+#logo p{
+  font-family: 'Dancing Script';
+  font-size: 2.3rem;
+  color: #484848;
+  padding-left: 0.5rem;
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 2.3rem;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: #484848;
+}
+
+.nav-menu a {
+  color: #484848;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.tlink {
+  font-size: 2rem;
+  padding: 5px;
+}
+
+#btn-login{
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #ffffff;
+  color: #484848;
+  font-family: 'Roboto';
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#btn-login:hover{
+  background-color: #299E9E;
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+.nav-menu a:hover {
+  color: #299E9E;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+hr {
+  border: 0.2px solid #5F5F5F;
+  margin: 6rem 3rem 1rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 5rem; 
+}
+
+footer h3 {
+  font-family: 'Roboto';
+  font-size: 1.5rem;
+  color: #484848;
+  padding-bottom: 2rem
+}
+
+footer section {
+  display: flex;
+  gap: 15rem;
+  align-items: center;
+  justify-content: center;
+  padding-right: 4rem;
+}
+
+footer section div {
+  display: flex;
+  align-items: center;
+}
+
+#pin-text p {
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  color: #484848;
+}
+
+#pin {
+  width: 3rem;
+  height: auto;
+}
+
+#social-media {
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+}
+
+#social-media li {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#social-media li p {
+  font-family: 'Roboto';
+  font-size: 1.3rem;
+  color: #484848;
+  font-weight: 500;
+}
+
+.icon-facebook {
+  color: #3b5998; 
+  font-size: 24px; 
+  width: 3rem;
+  height: auto;
+}
+
+.icon-instagram {
+  color: #bc2a8d; 
+  font-size: 24px; 
+  width: 3rem;
+  height: auto;
+}
+
+.icon-tiktok {
+  color: #000000; 
+  font-size: 24px; 
+  width: 3rem;
+  height: auto;
 }
