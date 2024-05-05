@@ -1,71 +1,118 @@
-import {Link} from 'react-router-dom'
-/*import { ListaProdutos } from '../components/ListaProdutos'*/
-import {GrFormEdit} from 'react-icons/gr'
-import { GrTrash } from "react-icons/gr"
-import {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
+import '../css/produto.css'
 
-export default function Produtos(){
+function Produto() {
+    const [database, setDatabase] = useState([]);
 
-/*Hook useState- recebe as variaveis e tambem modifica o seu estado */
-const [produto, setProduto]=useState([])
+    useEffect(() => {
+        loadData();
+    }, []);
 
-/* Hook useEffect - realiza um efeito colateral nesse exemplo vai pegar a api no dados.json */
-useEffect(()=>{
-    fetch("http://localhost:5000/produto/")
-    .then((resp)=>{
-      return resp.json();
-    }).then((resp)=>{
-      setProduto(resp)
-    })
-    /*tratamento de erros */
-    .catch((error)=>{
-      console.log(error)
-    })
-},[])/* retorno callback*/
+    async function loadData() {
+        try {
+            const response = await fetch('dados.json');
+            if (!response.ok) {
+                throw new Error('Erro ao carregar os dados');
+            }
+            const jsonData = await response.json(); // Converte a resposta para JSON
+            const produtos = jsonData.produto; // Acessa a chave "produto" do JSON
+            setDatabase(produtos); // Define os produtos na variável de estado
+        } catch (error) {
+            console.error('Erro:', error.message);
+        }
+    }
 
+    function createData() {
+        const newProduct = {};
 
+        newProduct.nome = prompt("Digite o nome do produto:");
+        if (!newProduct.nome) {
+            return; // Se o usuário cancelar ou deixar em branco, não cria o produto
+        }
 
+        newProduct.qtd = parseInt(prompt("Digite a quantidade do produto:"), 10);
+        if (isNaN(newProduct.qtd) || newProduct.qtd <= 0) {
+            alert("Quantidade inválida!");
+            return; // Se o usuário digitar uma quantidade inválida, não cria o produto
+        }
 
-    return(
-        <section className="produtos">
-            <h1>LISTA DE PRODUTOS</h1>
+        newProduct.valor = parseFloat(prompt("Digite o preço do produto:"));
+        if (isNaN(newProduct.valor) || newProduct.valor <= 0) {
+            alert("Preço inválido!");
+            return; // Se o usuário digitar um preço inválido, não cria o produto
+        }
 
-            <div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>NOME</th>
-              <th>DESCRIÇÃO</th>
-              <th>PREÇO</th>
-              <th>EDITAR / EXCLUIR</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* ele faz a leitura de todos os elementos do array, executa uma função callback para cada um e devolve como retorno um novo array */}
-            {produto.map((item, indice) => (
-              <tr key={indice}>
-                <td>{item.id}</td>
+        newProduct.id = database.length + 1; // Atribui um novo ID ao produto
+
+        setDatabase([...database, newProduct]);
+    }
+
+    function readData() {
+        return database.map(item => (
+            <tr key={item.id}>
                 <td>{item.nome}</td>
-                <td>{item.desc}</td>
+                <td>{item.qtd}</td>
                 <td>{item.valor}</td>
                 <td>
-                  {' '}
-                  {/*Link para chamar a tela de editar produtos */}
-                  <Link>
-                    <GrFormEdit />
-                  </Link>{' '}
-                  | {/*Link para chamar a tela de excluir produtos */}
-                  <Link>
-                    <GrTrash />
-                    {/*espaço entre os links '' */}
-                  </Link>{' '}
+                    <button className="edit" onClick={() => updateData(item.id)}>Editar</button>
+                    <button className="delete" onClick={() => deleteData(item.id)}>Excluir</button>
                 </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-        </section>
-    )
+            </tr>
+        ));
+    }
+
+    function updateData(id) {
+        const index = database.findIndex(item => item.id === id);
+        if (index !== -1) {
+            const newProduct = {};
+
+            newProduct.nome = prompt("Digite o novo nome do produto:");
+            if (!newProduct.nome) {
+                return; // Se o usuário cancelar ou deixar em branco, não atualiza o produto
+            }
+
+            newProduct.qtd = parseInt(prompt("Digite a nova quantidade do produto:"), 10);
+            if (isNaN(newProduct.qtd) || newProduct.qtd <= 0) {
+                alert("Quantidade inválida!");
+                return; // Se o usuário digitar uma quantidade inválida, não atualiza o produto
+            }
+
+            newProduct.valor = parseFloat(prompt("Digite o novo preço do produto:"));
+            if (isNaN(newProduct.valor) || newProduct.valor <= 0) {
+                alert("Preço inválido!");
+                return; // Se o usuário digitar um preço inválido, não atualiza o produto
+            }
+
+            const updatedDatabase = [...database];
+            updatedDatabase[index] = { ...database[index], ...newProduct }; // Atualiza os atributos do produto
+            setDatabase(updatedDatabase);
+        }
+    }
+
+    function deleteData(id) {
+        const updatedDatabase = database.filter(item => item.id !== id);
+        setDatabase(updatedDatabase);
+    }
+
+    return (
+        <div>
+            <h1>Tabela de Produtos</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {readData()}
+                </tbody>
+            </table>
+            <button onClick={createData}>Cadastrar Produto</button>
+        </div>
+    );
 }
+
+export default Produto;
