@@ -32,11 +32,11 @@ function Login() {
       {getUsuario && getSenha ? (
         <Portifolio/>
       ) : (
-        <form id="frmLogin" onSubmit={handleSubmit} >
+        <form className="frmLogin" onSubmit={handleSubmit} >
 
-            <h2 id="ttLogin">Bem-vindo faça seu login para continuar</h2>
+            <h2 className="ttLogin">Bem-vindo faça seu login para continuar</h2>
 
-            <p id="fieldLogin">
+            <p className="fieldLogin">
 
               <input type="text" className="inputLogin" placeholder="Seu Usuário" ref={usuario} />
 
@@ -44,7 +44,7 @@ function Login() {
 
             </p>
             
-            <button id='btnInputLogin' type="submit">Fazer login</button>
+            <button className='btnInputLogin' type="submit">Fazer login</button>
         </form>
       )}
     </section>
