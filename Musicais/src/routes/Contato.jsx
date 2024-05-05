@@ -43,7 +43,7 @@ function Contato() {
         <h2 className='titlecontato'>Sugestões, reclamações, agradecimentos... </h2>
         <h2 className='titlecontato'>Entre em contato:</h2>
         <div className="contatogeral">
-          <input
+          <input 
             type="text"
             className='formcont'
             placeholder='Seu nome'
