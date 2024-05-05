@@ -1,21 +1,32 @@
 import {} from 'react';
-import '../css/estilo.css';
+import '../css/homeestilo.css';
+import Carrossel from '/src/components/Carrossel.jsx';
 
 
 function Home() {
   return (
     <>
-      <div className="container bg-image">
-        <div className="produtos">
-          <h1>Produtos</h1>
-
-          <p>CONHEÇAS OS NOVOS PRODUTOS DA LOJA</p>
-          <a href="" className="btn">
-            Conheça mais
-          </a>       
+    <div className='mãe'>
+    <div className='titulo'>
+        <h1>Instrumentos </h1>
+        <h1>Musicais</h1>
+        <p>Aqui temos as variadas formas de</p>
+        <p>músicas veja um pouco ao lado</p>
+        <div className="button-container">
+          <button className="circular-button">Ou mais clicando aqui</button>
         </div>
       </div>
+
+      <div className='carrossel'>
+      <Carrossel /> {/* Use o componente Carrossel aqui */}
+
+      </div>
+    </div>
+
     </>
+      
+
+    
   );
 }
 
