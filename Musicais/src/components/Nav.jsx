@@ -1,38 +1,37 @@
 import {} from 'react';
 import { Link } from 'react-router-dom';
 import '../css/estilo.css';
+import logo from '../assets/LOGO.svg';
 
 function Nav() {
   return (
     <>
-      <header className="menu">
-        <nav className="nav-menu">
-          <ul>
-            <Link to="/" className="tlink">
-              Home
-            </Link>{' '}
-            {''}
-            <Link to="/sobre" className="tlink">
-              Sobre
-            </Link>
-            <Link to="/contato" className="tlink">
-              Contato
-            </Link>
+      
+      <nav className="nav-menu">
+        <div id='logo'>
+          <img src={logo} alt="logo" />
+          <p>Musi-cais</p>
+        </div>
+        <ul>
+          <Link to="/" className="tlink">
+            Home
+          </Link>{' '}
+          {''}
 
-            <Link to="/ListaProduto" className="tlink">
-              Produtos
-            </Link>
+          <Link to="/ListaProduto" className="tlink">
+            Produtos
+          </Link>          
 
-            <Link to="/ExemploApi" className="tlink">
-              Api-1
-            </Link>
+          <Link to="/contato" className="tlink">
+            Contato
+          </Link>
 
-            <Link to="/login" className="tlink">
-              Login
-            </Link>
-          </ul>
-        </nav>
-      </header>
+          <Link to="/login" id='btn-login' >
+            Login
+          </Link>
+        </ul>
+      </nav>
+      
     </>
   );
 }
