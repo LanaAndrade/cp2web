@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import '../css/produto.css'
+import '../css/produto.css';
+import pencil from '../assets/pencil.png';
+import trash from '../assets/trash-can.png';
 
 function Produto() {
     const [database, setDatabase] = useState([]);
@@ -48,18 +50,21 @@ function Produto() {
     }
 
     function readData() {
-        return database.map(item => (
-            <tr key={item.id}>
-                <td>{item.nome}</td>
-                <td>{item.qtd}</td>
-                <td>{item.valor}</td>
-                <td>
-                    <button className="edit" onClick={() => updateData(item.id)}>Editar</button>
-                    <button className="delete" onClick={() => deleteData(item.id)}>Excluir</button>
-                </td>
-            </tr>
-        ));
-    }
+      return database.map(item => (
+          <tr key={item.id} className='tr-body'>
+              <td>{item.nome}</td>
+              <td>{item.qtd}</td>
+              <td>{item.valor}</td>
+              <td>
+                  <img className='icon' src={pencil} onClick={() => updateData(item.id)} />
+              </td>
+              <td>
+                  <img className='icon' src={trash} onClick={() => deleteData(item.id)} />
+              </td>
+          </tr>
+      ));
+  }
+  
 
     function updateData(id) {
         const index = database.findIndex(item => item.id === id);
@@ -95,24 +100,27 @@ function Produto() {
     }
 
     return (
-        <div>
-            <h1>Tabela de Produtos</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Preço</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {readData()}
-                </tbody>
-            </table>
-            <button onClick={createData}>Cadastrar Produto</button>
-        </div>
-    );
+      <div>
+          <h1>Tabela de Produtos</h1>
+          <table>
+              <thead>
+                  <tr className='tr-header'>
+                      <th className='header-item' >Produto</th>
+                      <th className='header-item' >Quantid.</th>
+                      <th className='header-item' >Preço</th>
+                      <th className='header-item' >Editar</th>
+                      <th className='header-item' >Deletar</th>
+                  </tr>
+              </thead>
+              <tbody className='table-body'>
+                  {readData()}
+              </tbody>
+          </table>
+          <div className="button-cadastro">
+              <button onClick={createData}>Cadastrar produto</button>
+          </div>
+      </div>
+  );  
 }
 
 export default Produto;
