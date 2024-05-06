@@ -9,14 +9,14 @@
         {
             "id":2,
             "nome":"Violão",
-            "valor":10,
-            "qtd":500
+            "valor":675,
+            "qtd":50
         },
         {
             "id":2,
-            "nome":"Violão",
-            "valor":10,
-            "qtd":500
+            "nome":"Baixo",
+            "valor":500,
+            "qtd":13
         },
         {
             "id":3,
