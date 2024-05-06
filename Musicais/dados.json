@@ -2,16 +2,26 @@
     "produto":[
         {
             "id":1,
-            "nome":"Jogo-44",
-            "desc":"descricao jogo 44",
-            "valor":250,
-            "qtd":20
+            "nome":"Flauta",
+            "valor":200,
+            "qtd":40
         },
         {
             "id":2,
-            "nome":"Jogo-45",
-            "desc":"descricao jogo 45",
-            "valor":100,
+            "nome":"Violão",
+            "valor":10,
+            "qtd":500
+        },
+        {
+            "id":2,
+            "nome":"Violão",
+            "valor":10,
+            "qtd":500
+        },
+        {
+            "id":3,
+            "nome":"Guitarra",
+            "valor":1000,
             "qtd":10
         }
     ]
