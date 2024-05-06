@@ -16,9 +16,9 @@ function Produto() {
             if (!response.ok) {
                 throw new Error('Erro ao carregar os dados');
             }
-            const jsonData = await response.json(); // Converte a resposta para JSON
-            const produtos = jsonData.produto; // Acessa a chave "produto" do JSON
-            setDatabase(produtos); // Define os produtos na variável de estado
+            const jsonData = await response.json();
+            const produtos = jsonData.produto; 
+            setDatabase(produtos);
         } catch (error) {
             console.error('Erro:', error.message);
         }
@@ -29,22 +29,22 @@ function Produto() {
 
         newProduct.nome = prompt("Digite o nome do produto:");
         if (!newProduct.nome) {
-            return; // Se o usuário cancelar ou deixar em branco, não cria o produto
+            return; 
         }
 
         newProduct.qtd = parseInt(prompt("Digite a quantidade do produto:"), 10);
         if (isNaN(newProduct.qtd) || newProduct.qtd <= 0) {
             alert("Quantidade inválida!");
-            return; // Se o usuário digitar uma quantidade inválida, não cria o produto
+            return; 
         }
 
         newProduct.valor = parseFloat(prompt("Digite o preço do produto:"));
         if (isNaN(newProduct.valor) || newProduct.valor <= 0) {
             alert("Preço inválido!");
-            return; // Se o usuário digitar um preço inválido, não cria o produto
+            return; 
         }
 
-        newProduct.id = database.length + 1; // Atribui um novo ID ao produto
+        newProduct.id = database.length + 1; 
 
         setDatabase([...database, newProduct]);
     }
@@ -73,23 +73,23 @@ function Produto() {
 
             newProduct.nome = prompt("Digite o novo nome do produto:");
             if (!newProduct.nome) {
-                return; // Se o usuário cancelar ou deixar em branco, não atualiza o produto
+                return; 
             }
 
             newProduct.qtd = parseInt(prompt("Digite a nova quantidade do produto:"), 10);
             if (isNaN(newProduct.qtd) || newProduct.qtd <= 0) {
                 alert("Quantidade inválida!");
-                return; // Se o usuário digitar uma quantidade inválida, não atualiza o produto
+                return; //
             }
 
             newProduct.valor = parseFloat(prompt("Digite o novo preço do produto:"));
             if (isNaN(newProduct.valor) || newProduct.valor <= 0) {
                 alert("Preço inválido!");
-                return; // Se o usuário digitar um preço inválido, não atualiza o produto
+                return;
             }
 
             const updatedDatabase = [...database];
-            updatedDatabase[index] = { ...database[index], ...newProduct }; // Atualiza os atributos do produto
+            updatedDatabase[index] = { ...database[index], ...newProduct };
             setDatabase(updatedDatabase);
         }
     }
